@@ -10,6 +10,8 @@ import { defineConfig, devices } from '@playwright/test';
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
 
+export default defineConfig({
+
 /* Exécuter en parallèle les tests contenus dans les fichiers */
 fullyParallel: true,
 
