@@ -1,4 +1,20 @@
 // @ts-check
+
+import { test, expect } from '@playwright/test';
+
+test('connexion sur Parabank', async ({ page }) => {
+  await page.goto('https://parabank.parasoft.com/parabank/index.htm');
+
+  await page.fill('input[name="username"]', 'fredwam');
+  await page.fill('input[name="password"]', 'fredwam');
+  await page.click('input[type="submit"]');
+
+  await expect(page).toHaveURL(/overview\.htm/);
+
+  await expect(page.getByRole('heading', { name: 'Accounts Overview' })).toBeVisible();
+});
+
+
 /*
 import { test, expect } from '@playwright/test';
 
@@ -23,23 +39,3 @@ test('get started link', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
 */
-
-
-
-
-
-import { test, expect } from '@playwright/test';
-
-test('connexion sur Parabank', async ({ page }) => {
-  await page.goto('https://parabank.parasoft.com/parabank/index.htm');
-
-  await page.fill('input[name="username"]', 'fredwam');
-  await page.fill('input[name="password"]', 'fredwam');
-  await page.click('input[type="submit"]');
-
-  await expect(page).toHaveURL(/overview\.htm/);
-
-  await expect(page.getByRole('heading', { name: 'Accounts Overview' })).toBeVisible();
-});
-
-
